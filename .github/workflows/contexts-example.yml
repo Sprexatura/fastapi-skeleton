@@ -5,7 +5,7 @@ jobs:
   use-contexts:
     strategy:
       matrix:
-        greeting: [Hello, Howdy, Hey]
+        greeting: [Hello]
     runs-on: ubuntu-latest
     steps:
       -
