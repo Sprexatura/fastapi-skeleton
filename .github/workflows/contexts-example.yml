@@ -1,7 +1,7 @@
 name: contexts-example
 on:
   push:
-  pull_request:
+  pull:
 jobs:
   use-contexts:
     strategy:
@@ -14,13 +14,11 @@ jobs:
         run: echo $GREETING
         env:
           GREETING: ${{ matrix.greeting }}
-
       -
         name: Do work with a secret
         run: ./workRequiringASecret.sh
         env:
           A_SECRET: ${{ secrets.A_SECRET }}
-
       -
         name: Run only for pulls
         if: ${{ github.event == "pull" }}
