@@ -20,5 +20,5 @@ jobs:
           A_SECRET: ${{ secrets.A_SECRET }}
       -
         name: Run only for pulls
-        if: ${{ github.refs.tags == 'refs/tags/test-*' }}
+        if: ${{ github.refs.tags == 'refs/tags/test-branch3' }}
         run: echo "Triggered by only tag"
