@@ -1,0 +1,24 @@
+name: contexts-example
+on:
+  push:
+jobs:
+  use-contexts:
+    strategy:
+      matrix:
+        greeting: [Hello]
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Print greeting
+        run: echo $GREETING
+        env:
+          GREETING: ${{ matrix.greeting }}
+      -
+        name: Do work with a secret
+        run: echo $A_SECRET
+        env:
+          A_SECRET: ${{ secrets.A_SECRET }}
+      -
+        name: Run only for pulls
+        if: ${{ github.refs.tags == 'refs/tags/test-branch3' }}
+        run: echo "Triggered by only tag"
